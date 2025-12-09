@@ -68,8 +68,8 @@ class PaystackController extends Controller
         $fields = [
             'email' => $payer['email'] ?? "customer@email.com",
             'amount' => ($data['payment_amount'] ?? 0) * 100,
-            'currency' => $data['currency'] ?? 'XOF',
-            'reference' => (string)('REF' . time() . 'RANDOM'),
+            'currency' => $data['currency_code'] ?? 'XOF',
+            'reference' => (string) ('REF' . time() . 'RANDOM'),
             'callback_url' => route('paystack.callback', ['payment_id' => $data['id']]),
             'metadata' => [
                 'payment_id' => $data['id'],
@@ -89,9 +89,15 @@ class PaystackController extends Controller
         ));
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        $response = json_decode(curl_exec($ch), true);
+        // curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // Uncomment if needed for local dev
 
-        if ($response['status'] && isset($response['data']['authorization_url'])) {
+        $result = curl_exec($ch);
+        $error = curl_error($ch);
+        curl_close($ch);
+
+        $response = json_decode($result, true);
+
+        if (isset($response['status']) && $response['status'] && isset($response['data']['authorization_url'])) {
             return redirect($response['data']['authorization_url']);
         }
 
