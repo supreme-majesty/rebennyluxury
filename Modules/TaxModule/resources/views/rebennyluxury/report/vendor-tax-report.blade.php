@@ -279,7 +279,7 @@
             </div>
         </div>
     </div>
-    @include("taxmodule::6valley.offcanvas._vendor-report")
+    @include("taxmodule::rebennyluxury.offcanvas._vendor-report")
 @endsection
 
 @push('script')

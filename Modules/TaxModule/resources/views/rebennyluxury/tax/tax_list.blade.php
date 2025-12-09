@@ -162,13 +162,13 @@
         @endif
     </div>
 
-    @include("taxmodule::6valley.tax.partials.vat-tax-create")
+    @include("taxmodule::rebennyluxury.tax.partials.vat-tax-create")
 
     @foreach ($vatTaxes as $key => $vatTax)
-        @include("taxmodule::6valley.tax.partials.vat-tax-update", ['vatTax' => $vatTax])
+        @include("taxmodule::rebennyluxury.tax.partials.vat-tax-update", ['vatTax' => $vatTax])
     @endforeach
 
-    @include("taxmodule::6valley.offcanvas._vat-tax-create")
+    @include("taxmodule::rebennyluxury.offcanvas._vat-tax-create")
 @endsection
 
 @push('script')

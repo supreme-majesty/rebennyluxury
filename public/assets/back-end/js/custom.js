@@ -1684,8 +1684,8 @@ $(".product-stock-limit-close").on("click", function () {
 
 $(document).ready(function () {
     if (
-        document.cookie.indexOf("6valley_stock_limit_status=accepted") !== -1 ||
-        document.cookie.indexOf("6valley_stock_limit_status=reject") !== -1
+        document.cookie.indexOf("rebennyluxury_stock_limit_status=accepted") !== -1 ||
+        document.cookie.indexOf("rebennyluxury_stock_limit_status=reject") !== -1
     ) {
         $(".product-limited-stock-alert").hide();
     } else {
@@ -1696,7 +1696,7 @@ $(document).ready(function () {
 
 $(document).on("click", ".product-stock-alert-hide", function () {
     document.cookie =
-        "6valley_stock_limit_status=accepted; max-age=" +
+        "rebennyluxury_stock_limit_status=accepted; max-age=" +
         60 * 60 * 24 * 30 +
         "; path=/";
     $(".product-limited-stock-alert").hide();
@@ -1704,7 +1704,7 @@ $(document).on("click", ".product-stock-alert-hide", function () {
 
 $(document).on("click", ".product-stock-limit-close", function () {
     document.cookie =
-        "6valley_stock_limit_status=reject; max-age=" + 60 * 20 + "; path=/";
+        "rebennyluxury_stock_limit_status=reject; max-age=" + 60 * 20 + "; path=/";
     $(".product-limited-stock-alert").hide();
 });
 
@@ -1811,10 +1811,10 @@ function getInitialDataForPanel() {
 
             if (
                 document.cookie.indexOf(
-                    "6valley_restock_request_status=accepted"
+                    "rebennyluxury_restock_request_status=accepted"
                 ) !== -1 ||
                 document.cookie.indexOf(
-                    "6valley_restock_request_status=reject"
+                    "rebennyluxury_restock_request_status=reject"
                 ) !== -1
             ) {
                 $(".product-restock-stock-alert").hide();
@@ -1831,7 +1831,7 @@ function getInitialDataForPanel() {
 }
 
 $(document).on("click", ".product-restock-request-alert-hide", function () {
-    document.cookie = "6valley_restock_request_status=accepted; path=/";
+    document.cookie = "rebennyluxury_restock_request_status=accepted; path=/";
     $(".product-restock-stock-alert").hide();
 });
 
@@ -1845,7 +1845,7 @@ function productRestockStockLimitStatus(response) {
 }
 
 $(".product-restock-stock-close").on("click", function () {
-    document.cookie = "6valley_restock_request_status=accepted; path=/";
+    document.cookie = "rebennyluxury_restock_request_status=accepted; path=/";
     $(".product-restock-stock-alert").hide();
 });
 

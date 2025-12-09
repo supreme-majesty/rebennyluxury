@@ -4,7 +4,7 @@
 
 @php($recaptcha = getWebConfig(name: 'recaptcha'))
 <span id="get-google-recaptcha-key"
-data-value="{{ isset($recaptcha) && $recaptcha['status'] == 1 ? $recaptcha['site_key'] : '' }}"></span>
+    data-value="{{ isset($recaptcha) && $recaptcha['status'] == 1 ? $recaptcha['site_key'] : '' }}"></span>
 
 <script src="{{ theme_asset('assets/js/jquery-3.6.0.min.js') }}"></script>
 <script src="{{ theme_asset('assets/js/bootstrap.bundle.min.js') }}"></script>
@@ -18,7 +18,8 @@ data-value="{{ isset($recaptcha) && $recaptcha['status'] == 1 ? $recaptcha['site
 
 <script src="{{ dynamicAsset(path: 'public/assets/backend/libs/intl-tel-input/js/intlTelInput.js') }}"></script>
 <script src="{{ dynamicAsset(path: 'public/assets/backend/libs/intl-tel-input/js/utils.js') }}"></script>
-<script src="{{ dynamicAsset(path: 'public/assets/backend/libs/intl-tel-input/js/intlTelInout-validation.js') }}"></script>
+<script
+    src="{{ dynamicAsset(path: 'public/assets/backend/libs/intl-tel-input/js/intlTelInout-validation.js') }}"></script>
 
 <script src="{{ dynamicAsset(path: 'public/assets/backend/file-validation/polyfills.js') }}"></script>
 <script src="{{ dynamicAsset(path: 'public/assets/backend/file-validation/just-validate.min.js') }}"></script>
@@ -47,45 +48,45 @@ data-value="{{ isset($recaptcha) && $recaptcha['status'] == 1 ? $recaptcha['site
 
 <script>
     document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll('.traking-slide-wrap').forEach(wrapper => {
-        const container = wrapper.querySelector('.nav');
-        if (!container) return;
+        document.querySelectorAll('.traking-slide-wrap').forEach(wrapper => {
+            const container = wrapper.querySelector('.nav');
+            if (!container) return;
 
-        const btnPrevWrap = wrapper.querySelector('.button-prev');
-        const btnNextWrap = wrapper.querySelector('.button-next');
-        const item = wrapper.querySelector('.traking-item');
+            const btnPrevWrap = wrapper.querySelector('.button-prev');
+            const btnNextWrap = wrapper.querySelector('.button-next');
+            const item = wrapper.querySelector('.traking-item');
 
-        wrapper.querySelectorAll('.traking-item').forEach(el => {
-            el.style.flex = '0 0 auto';
-        });
-        function updateArrows() {
-            const hasOverflow = container.scrollWidth > container.clientWidth;
-            if (!hasOverflow) {
-                btnPrevWrap?.style.setProperty('display', 'none');
-                btnNextWrap?.style.setProperty('display', 'none');
-                return;
+            wrapper.querySelectorAll('.traking-item').forEach(el => {
+                el.style.flex = '0 0 auto';
+            });
+            function updateArrows() {
+                const hasOverflow = container.scrollWidth > container.clientWidth;
+                if (!hasOverflow) {
+                    btnPrevWrap?.style.setProperty('display', 'none');
+                    btnNextWrap?.style.setProperty('display', 'none');
+                    return;
+                }
+                const atStart = container.scrollLeft <= 0;
+                const atEnd = container.scrollLeft + container.clientWidth >= container.scrollWidth - 1;
+                btnPrevWrap?.style.setProperty('display', atStart ? 'none' : 'flex');
+                btnNextWrap?.style.setProperty('display', atEnd ? 'none' : 'flex');
             }
-            const atStart = container.scrollLeft <= 0;
-            const atEnd = container.scrollLeft + container.clientWidth >= container.scrollWidth - 1;
-            btnPrevWrap?.style.setProperty('display', atStart ? 'none' : 'flex');
-            btnNextWrap?.style.setProperty('display', atEnd ? 'none' : 'flex');
-        }
-        wrapper.querySelector('.btn-click-prev')?.addEventListener('click', () => {
-            const itemWidth = item?.offsetWidth || 0;
-            container.scrollBy({ left: -itemWidth, behavior: 'smooth' });
+            wrapper.querySelector('.btn-click-prev')?.addEventListener('click', () => {
+                const itemWidth = item?.offsetWidth || 0;
+                container.scrollBy({ left: -itemWidth, behavior: 'smooth' });
+            });
+            wrapper.querySelector('.btn-click-next')?.addEventListener('click', () => {
+                const itemWidth = item?.offsetWidth || 0;
+                container.scrollBy({ left: itemWidth, behavior: 'smooth' });
+            });
+            container.addEventListener('scroll', updateArrows);
+            window.addEventListener('resize', updateArrows);
+            new MutationObserver(updateArrows).observe(container, { childList: true, subtree: true });
+            new ResizeObserver(updateArrows).observe(container);
+            // Initial check
+            updateArrows();
         });
-        wrapper.querySelector('.btn-click-next')?.addEventListener('click', () => {
-            const itemWidth = item?.offsetWidth || 0;
-            container.scrollBy({ left: itemWidth, behavior: 'smooth' });
-        });
-        container.addEventListener('scroll', updateArrows);
-        window.addEventListener('resize', updateArrows);
-        new MutationObserver(updateArrows).observe(container, { childList: true, subtree: true });
-        new ResizeObserver(updateArrows).observe(container);
-        // Initial check
-        updateArrows();
     });
-});
 </script>
 
 <script>
@@ -113,17 +114,17 @@ data-value="{{ isset($recaptcha) && $recaptcha['status'] == 1 ? $recaptcha['site
     <script>
         'use strict';
         @foreach($errors->all() as $error)
-        toastr.error('{{$error}}', Error, {
-            CloseButton: true,
-            ProgressBar: true
-        });
+            toastr.error('{{$error}}', Error, {
+                CloseButton: true,
+                ProgressBar: true
+            });
         @endforeach
     </script>
 @endif
 <script>
     'use strict';
     let cookieSection = $('#cookie-section');
-    @php($cookie = $web_config['cookie_setting'] ? json_decode($web_config['cookie_setting']['value'], true):null)
+    @php($cookie = $web_config['cookie_setting'] ? json_decode($web_config['cookie_setting']['value'], true) : null)
     let cookie_content = `
         <div class="cookies active absolute-white py-4">
             <div class="container">
@@ -137,18 +138,18 @@ data-value="{{ isset($recaptcha) && $recaptcha['status'] == 1 ? $recaptcha['site
         </div>
         `;
     $(document).on('click', '#cookie-accept', function () {
-        document.cookie = '6valley_cookie_consent=accepted; max-age=' + 60 * 60 * 24 * 30;
+        document.cookie = 'rebennyluxury_cookie_consent=accepted; max-age=' + 60 * 60 * 24 * 30;
         cookieSection.hide();
     });
     $(document).on('click', '#cookie-reject', function () {
-        document.cookie = '6valley_cookie_consent=reject; max-age=' + 60 * 60 * 24;
+        document.cookie = 'rebennyluxury_cookie_consent=reject; max-age=' + 60 * 60 * 24;
         cookieSection.hide();
     });
 
     $(document).ready(function () {
-        if (document.cookie.indexOf("6valley_cookie_consent=accepted") !== -1) {
+        if (document.cookie.indexOf("rebennyluxury_cookie_consent=accepted") !== -1) {
             cookieSection.hide();
-        } else if (document.cookie.indexOf("6valley_cookie_consent=reject") !== -1) {
+        } else if (document.cookie.indexOf("rebennyluxury_cookie_consent=reject") !== -1) {
             cookieSection.hide();
         } else {
             cookieSection.html(cookie_content).show();
@@ -164,13 +165,13 @@ data-value="{{ isset($recaptcha) && $recaptcha['status'] == 1 ? $recaptcha['site
 @if(!auth('customer')->check())
     <script>
         "use strict";
-        $(document).ready(function() {
+        $(document).ready(function () {
             const currentUrl = new URL(window.location.href);
             const referral_code_parameter = new URLSearchParams(currentUrl.search).get("referral_code");
 
             if (referral_code_parameter) {
                 $('#registerModal').modal('show');
-                let referralCode =  $('#referral_code');
+                let referralCode = $('#referral_code');
                 if (referralCode.length) {
                     referralCode.val(referral_code_parameter);
                 }

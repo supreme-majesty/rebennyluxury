@@ -1,5 +1,5 @@
 /*---------------------------------------------
-	Template name:  6valley Grocery
+	Template name:  rebennyluxury Grocery
 	Version:        1.0
 	Author:         6amtech
 	Author url:     https://6amtech.com/
@@ -52,13 +52,13 @@ We may release future updates so it will overwrite this file. it's better and sa
     36: Stop propagation
 ----------------------------------------------*/
 
-(function ($) {
+(function($) {
     "use strict";
 
     /*===================
     01: Main Menu
     =====================*/
-    $('ul.nav li a[href="#"]').on("click", function (event) {
+    $('ul.nav li a[href="#"]').on("click", function(event) {
         event.preventDefault();
     });
 
@@ -71,15 +71,24 @@ We may release future updates so it will overwrite this file. it's better and sa
     /* Submenu Opened */
     $(".aside .aside-body, .common-nav")
         .find(".has-sub-item > a, .has-sub-item > label")
-        .on("click", function (event) {
+        .on("click", function(event) {
             event.preventDefault();
             $(this)
                 .parent(".has-sub-item")
                 .siblings("li")
                 .removeClass("sub-menu-opened");
-            $(this).parent(".has-sub-item").toggleClass("sub-menu-opened");
-            if ($(this).siblings("ul").hasClass("open")) {
-                $(this).siblings("ul").removeClass("open").slideUp("200");
+            $(this)
+                .parent(".has-sub-item")
+                .toggleClass("sub-menu-opened");
+            if (
+                $(this)
+                    .siblings("ul")
+                    .hasClass("open")
+            ) {
+                $(this)
+                    .siblings("ul")
+                    .removeClass("open")
+                    .slideUp("200");
             } else {
                 $(this)
                     .parent("li")
@@ -87,7 +96,10 @@ We may release future updates so it will overwrite this file. it's better and sa
                     .find("ul")
                     .removeClass("open")
                     .slideUp("200");
-                $(this).siblings("ul").addClass("open").slideDown("200");
+                $(this)
+                    .siblings("ul")
+                    .addClass("open")
+                    .slideDown("200");
             }
         });
 
@@ -101,7 +113,7 @@ We may release future updates so it will overwrite this file. it's better and sa
     //     height: headerH + "px",
     // });
 
-    $(window).on("scroll", function () {
+    $(window).on("scroll", function() {
         var scroll = $(window).scrollTop();
 
         if (scroll < 100) {
@@ -115,20 +127,20 @@ We may release future updates so it will overwrite this file. it's better and sa
     03: Mobile Menu
     ==========================*/
     /* Toggle Menu */
-    $(".menu-btn").on("click", function () {
+    $(".menu-btn").on("click", function() {
         $(".aside").toggleClass("active");
         $(".filter-toggle-aside").removeClass("active");
 
         if ($(this).hasClass("search")) {
-            setTimeout(function () {
+            setTimeout(function() {
                 $(".aside .search-bar-input-mobile").focus();
             }, 100);
         }
     });
-    $(".aside-close > i").on("click", function () {
+    $(".aside-close > i").on("click", function() {
         $(".aside").removeClass("active");
     });
-    $(window).on("resize", function () {
+    $(window).on("resize", function() {
         if ($(window).width() > 1199) {
             $(".aside").removeClass("active");
         }
@@ -139,7 +151,7 @@ We may release future updates so it will overwrite this file. it's better and sa
     ==========================*/
     var $bgImg = $("[data-bg-img]");
     $bgImg
-        .css("background-image", function () {
+        .css("background-image", function() {
             return 'url("' + $(this).data("bg-img") + '")';
         })
         .removeAttr("data-bg-img")
@@ -148,7 +160,7 @@ We may release future updates so it will overwrite this file. it's better and sa
     /*==================================
     05: Check Data
     ====================================*/
-    var checkData = function (data, value) {
+    var checkData = function(data, value) {
         return typeof data === "undefined" ? value : data;
     };
 
@@ -169,7 +181,7 @@ We may release future updates so it will overwrite this file. it's better and sa
     08: Dark, Light & RTL Switcher
     ==============================================*/
     function themeSwitcher(className, themeName) {
-        $(className).on("click", function () {
+        $(className).on("click", function() {
             $(".theme-bar button").removeClass("active");
             $(this).addClass("active");
             $("body").attr("theme", themeName);
@@ -180,7 +192,7 @@ We may release future updates so it will overwrite this file. it's better and sa
     themeSwitcher(".dark_button", "dark");
 
     function rtlSwitcher(className, dirName) {
-        $(className).on("click", function () {
+        $(className).on("click", function() {
             $(".dir-bar button").removeClass("active");
             $(this).addClass("active");
             $("html").attr("dir", dirName);
@@ -190,7 +202,7 @@ We may release future updates so it will overwrite this file. it's better and sa
     rtlSwitcher(".ltr_button", "ltr");
     rtlSwitcher(".rtl_button", "rtl");
 
-    $(window).on("load", function () {
+    $(window).on("load", function() {
         let themeName = localStorage.getItem("theme");
         $(".dir-bar button").removeClass("active");
         if (themeName == "dark") {
@@ -206,12 +218,12 @@ We may release future updates so it will overwrite this file. it's better and sa
     /*============================================
     09: Settings Toggle
     ==============================================*/
-    $(document).ready(function () {
-        $(document).on("click", ".settings-toggle-icon", function (e) {
+    $(document).ready(function() {
+        $(document).on("click", ".settings-toggle-icon", function(e) {
             e.stopPropagation();
             $(".settings-sidebar").toggleClass("active");
         });
-        $(document).on("click", "body", function (e) {
+        $(document).on("click", "body", function(e) {
             if (!$(e.target).is(".settings-sidebar, .settings-sidebar *"))
                 $(".settings-sidebar").removeClass("active");
         });
@@ -222,7 +234,7 @@ We may release future updates so it will overwrite this file. it's better and sa
     ==============================================*/
     var current = location.pathname;
     var $path = current.substring(current.lastIndexOf("/") + 1);
-    $(".aside-body .nav li a").each(function (e) {
+    $(".aside-body .nav li a").each(function(e) {
         var $this = $(this);
         if ($path == $this.attr("href")) {
             $this.parent("li").addClass("active open");
@@ -246,8 +258,8 @@ We may release future updates so it will overwrite this file. it's better and sa
     /*============================================
     11: File Upload
     ==============================================*/
-    $(window).on("load", function () {
-        $(".upload-file__input").on("change", function () {
+    $(window).on("load", function() {
+        $(".upload-file__input").on("change", function() {
             if (this.files && this.files[0]) {
                 let reader = new FileReader();
                 let img = $(this)
@@ -259,7 +271,7 @@ We may release future updates so it will overwrite this file. it's better and sa
                     .find(".temp-img-box")
                     .remove();
 
-                reader.onload = function (e) {
+                reader.onload = function(e) {
                     img.attr("src", e.target.result);
                 };
 
@@ -272,7 +284,7 @@ We may release future updates so it will overwrite this file. it's better and sa
     12: Collapse
     ====================================*/
     function collapse() {
-        $(document.body).on("click", '[data-toggle="collapse"]', function (e) {
+        $(document.body).on("click", '[data-toggle="collapse"]', function(e) {
             e.preventDefault();
             var target = "#" + $(this).data("target");
 
@@ -285,8 +297,8 @@ We may release future updates so it will overwrite this file. it's better and sa
     /*==================================
     13: togglePassword
     ====================================*/
-    $(window).on("load", function () {
-        $(".togglePassword").on("click", function (e) {
+    $(window).on("load", function() {
+        $(".togglePassword").on("click", function(e) {
             const password = $(this).siblings(".form-control");
             password.attr("type") === "password"
                 ? $(this)
@@ -304,7 +316,7 @@ We may release future updates so it will overwrite this file. it's better and sa
     /*==================================
     14: Countdown Timer
     ====================================*/
-    $("[data-date]").each(function (_, value) {
+    $("[data-date]").each(function(_, value) {
         let dataDate = $(value).data("date");
 
         function countdownTimer() {
@@ -374,9 +386,9 @@ We may release future updates so it will overwrite this file. it's better and sa
     /*==================================
     15: Swiper
     ====================================*/
-    $(window).on("load", function () {
+    $(window).on("load", function() {
         var $swiper = $(".swiper");
-        $swiper.each(function () {
+        $swiper.each(function() {
             var $t = $(this);
             new Swiper($t[0], {
                 slidesPerView: checkData($t.data("swiper-items"), 1),
@@ -392,7 +404,7 @@ We may release future updates so it will overwrite this file. it's better and sa
                 autoplay: {
                     delay: checkData($t.data("swiper-delay"), 3000),
                     disableOnInteraction: false,
-                    pauseOnMouseEnter: true,
+                    pauseOnMouseEnter: true
                 },
                 navigation: {
                     nextEl: checkData(
@@ -402,7 +414,7 @@ We may release future updates so it will overwrite this file. it's better and sa
                     prevEl: checkData(
                         $t.data("swiper-navigation-prev"),
                         ".swiper-button-prev"
-                    ),
+                    )
                 },
                 pagination: {
                     el: checkData(
@@ -416,21 +428,24 @@ We may release future updates so it will overwrite this file. it's better and sa
                     clickable: checkData(
                         $t.data("swiper-pagination-clickable"),
                         true
-                    ),
+                    )
                 },
                 on: {
-                    init: function () {
+                    init: function() {
                         handleSwiperButtonVisibility(this);
 
                         var minHeight = 0;
                         for (var i = 0; i < this.slides.length; i++) {
-                            minHeight = Math.max(minHeight, this.slides[i].clientHeight);
+                            minHeight = Math.max(
+                                minHeight,
+                                this.slides[i].clientHeight
+                            );
                         }
                         for (var i = 0; i < this.slides.length; i++) {
                             this.slides[i].style.minHeight = minHeight + "px";
                         }
                     },
-                    resize: function () {
+                    resize: function() {
                         handleSwiperButtonVisibility(this);
                     }
                 }
@@ -456,22 +471,21 @@ We may release future updates so it will overwrite this file. it's better and sa
         }
     }
 
-
     /*==================================
     16: PreventDefault
     ====================================*/
-    $(".preventDefault").on("click", function (e) {
+    $(".preventDefault").on("click", function(e) {
         e.preventDefault();
     });
 
     /*============================================
     17: Back to top button
     ==============================================*/
-    $(window).on("load", function () {
+    $(window).on("load", function() {
         var backToTopBtn = $(".back-to-top");
         var socialChatIcon = $(".social-chat-icons");
 
-        $(window).on("scroll", function () {
+        $(window).on("scroll", function() {
             if ($(window).scrollTop() > 400) {
                 backToTopBtn.addClass("show");
                 socialChatIcon.addClass("active");
@@ -481,9 +495,11 @@ We may release future updates so it will overwrite this file. it's better and sa
             }
         });
 
-        backToTopBtn.on("click", function (e) {
+        backToTopBtn.on("click", function(e) {
             e.preventDefault();
-            $("html, body").stop().animate({ scrollTop: 0 }, 0);
+            $("html, body")
+                .stop()
+                .animate({ scrollTop: 0 }, 0);
             return false;
         });
     });
@@ -533,7 +549,7 @@ We may release future updates so it will overwrite this file. it's better and sa
     /*==================================
     19: Changing svg color
     ====================================*/
-    $("img.svg").each(function () {
+    $("img.svg").each(function() {
         var $img = jQuery(this);
         var imgID = $img.attr("id");
         var imgClass = $img.attr("class");
@@ -541,7 +557,7 @@ We may release future updates so it will overwrite this file. it's better and sa
 
         jQuery.get(
             imgURL,
-            function (data) {
+            function(data) {
                 // Get the SVG tag, ignore the rest
                 var $svg = jQuery(data).find("svg");
 
@@ -587,22 +603,22 @@ We may release future updates so it will overwrite this file. it's better and sa
         watchSlidesProgress: true,
         autoplay: {
             delay: 5000,
-            disableOnInteraction: false,
+            disableOnInteraction: false
         },
         navigation: {
             nextEl: ".swiper-quickview-button-next",
-            prevEl: ".swiper-quickview-button-prev",
-        },
+            prevEl: ".swiper-quickview-button-prev"
+        }
     });
     var quickviewSlider = new Swiper(".quickviewSlider", {
         // spaceBetween: 10,
         autoplay: {
             delay: 5000,
-            disableOnInteraction: false,
+            disableOnInteraction: false
         },
         thumbs: {
-            swiper: quickviewSliderThumb,
-        },
+            swiper: quickviewSliderThumb
+        }
     });
 
     // Product Quick View Modal
@@ -615,37 +631,37 @@ We may release future updates so it will overwrite this file. it's better and sa
         centeredSlides: false,
         autoplay: {
             delay: 5000,
-            disableOnInteraction: false,
+            disableOnInteraction: false
         },
         navigation: {
             nextEl: ".swiper-quickview-button-next",
             prevEl: ".swiper-quickview-button-prev",
-            clickable: true,
-        },
+            clickable: true
+        }
     });
 
     var quickviewSlider2 = new Swiper(".quickviewSlider2", {
         // spaceBetween: 10,
         autoplay: {
             delay: 5000,
-            disableOnInteraction: false,
+            disableOnInteraction: false
         },
         thumbs: {
-            swiper: quickviewSliderThumb2,
-        },
+            swiper: quickviewSliderThumb2
+        }
     });
 
-    $(".quickviewSlider2").on("mouseenter", function () {
+    $(".quickviewSlider2").on("mouseenter", function() {
         quickviewSlider2_stop();
     });
-    $(".quickviewSlider2").on("mouseleave", function () {
+    $(".quickviewSlider2").on("mouseleave", function() {
         quickviewSlider2_start();
     });
 
-    $(".quickviewSliderThumb2").on("mouseenter", function () {
+    $(".quickviewSliderThumb2").on("mouseenter", function() {
         quickviewSlider2_stop();
     });
-    $(".quickviewSliderThumb2").on("mouseleave", function () {
+    $(".quickviewSliderThumb2").on("mouseleave", function() {
         quickviewSlider2_start();
     });
 
@@ -662,13 +678,13 @@ We may release future updates so it will overwrite this file. it's better and sa
     /*==================================
     21: Multi Range Slider
     ====================================*/
-    $(document).ready(function () {
+    $(document).ready(function() {
         var rangeOne = $('input[name="rangeOne"]'),
             rangeTwo = $('input[name="rangeTwo"]'),
             outputOne = $("#min_price"),
             outputTwo = $("#max_price"),
             inclRange = $(".incl-range"),
-            updateView = function () {
+            updateView = function() {
                 if ($(this).attr("name") === "rangeOne") {
                     outputOne.val($(this).val());
                 } else {
@@ -682,7 +698,7 @@ We may release future updates so it will overwrite this file. it's better and sa
                                 100 +
                             "%",
                         "inset-inline-start":
-                            (rangeTwo.val() / $(this).attr("max")) * 100 + "%",
+                            (rangeTwo.val() / $(this).attr("max")) * 100 + "%"
                     });
                 } else {
                     inclRange.css({
@@ -692,7 +708,7 @@ We may release future updates so it will overwrite this file. it's better and sa
                                 100 +
                             "%",
                         "inset-inline-start":
-                            (rangeOne.val() / $(this).attr("max")) * 100 + "%",
+                            (rangeOne.val() / $(this).attr("max")) * 100 + "%"
                     });
                 }
             };
@@ -701,12 +717,12 @@ We may release future updates so it will overwrite this file. it's better and sa
         updateView.call(rangeTwo);
 
         $('input[type="range"]').on({
-            mouseup: function () {
+            mouseup: function() {
                 $(this).blur();
             },
-            "mousedown input": function () {
+            "mousedown input": function() {
                 updateView.call(this);
-            },
+            }
         });
     });
 
@@ -722,9 +738,11 @@ We may release future updates so it will overwrite this file. it's better and sa
     /*==================================
     23: Show Cookie Dialog
     ====================================*/
-    $(".cookies").on("click", ".btn", function (e) {
+    $(".cookies").on("click", ".btn", function(e) {
         e.preventDefault();
-        $(this).parents(".cookies").removeClass("active");
+        $(this)
+            .parents(".cookies")
+            .removeClass("active");
     });
 
     //Temp
@@ -733,8 +751,10 @@ We may release future updates so it will overwrite this file. it's better and sa
     /*==================================
     24: Hide Top Offer Bar
     ====================================*/
-    $(".offer-bar-close").on("click", function (e) {
-        $(this).parents(".offer-bar").slideUp("fast");
+    $(".offer-bar-close").on("click", function(e) {
+        $(this)
+            .parents(".offer-bar")
+            .slideUp("fast");
         let hideUntil = Date.now() + 300000;
         localStorage.setItem("offerBarHideUntil", hideUntil);
     });
@@ -742,17 +762,21 @@ We may release future updates so it will overwrite this file. it's better and sa
     /*==================================
     25: Handle Input Focus
     ====================================*/
-    $(".focus-input").on("focus", function () {
-        $(this).parents(".focus-border").addClass("border-dark");
+    $(".focus-input").on("focus", function() {
+        $(this)
+            .parents(".focus-border")
+            .addClass("border-dark");
     });
-    $(".focus-input").on("blur", function () {
-        $(this).parents(".focus-border").removeClass("border-dark");
+    $(".focus-input").on("blur", function() {
+        $(this)
+            .parents(".focus-border")
+            .removeClass("border-dark");
     });
 
     /*==================================
     26: Product Details Content Collapse
     ====================================*/
-    $(".see-more-details").on("click", function () {
+    $(".see-more-details").on("click", function() {
         $(this)
             .parent()
             .siblings(".details-content-wrap")
@@ -768,7 +792,7 @@ We may release future updates so it will overwrite this file. it's better and sa
     /*==================================
     27: Show Hide Billing Address
     ====================================*/
-    $(".billing-address-checkbox").on("change", function () {
+    $(".billing-address-checkbox").on("change", function() {
         if ($(this).prop("checked")) {
             $(".toggle-billing-address").slideUp();
             $(".save-billing-address").hide();
@@ -781,20 +805,25 @@ We may release future updates so it will overwrite this file. it's better and sa
     /*==================================
     28: Search Dropdown
     ====================================*/
-    $(".search_dropdown ul li a").on("click", function () {
-        let selectedText = $(this).text().trim();
+    $(".search_dropdown ul li a").on("click", function() {
+        let selectedText = $(this)
+            .text()
+            .trim();
         let selectId = $(this).data("value");
-        $(this).parents(".search_dropdown").find("button").text(selectedText);
+        $(this)
+            .parents(".search_dropdown")
+            .find("button")
+            .text(selectedText);
         $("#search_category_value").val(selectId);
     });
 
     /*==================================
     29: List View Grid View Product
     ====================================*/
-    $(document).ready(function () {
+    $(document).ready(function() {
         $(".product-view-option input[name=product_view]").on(
             "change",
-            function () {
+            function() {
                 if ($(this).val() === "list-view") {
                     $("#filtered-products")
                         .addClass("product-list-view")
@@ -815,20 +844,20 @@ We may release future updates so it will overwrite this file. it's better and sa
     /*==================================
     30: OTP Verification
     ====================================*/
-    $(document).ready(function () {
+    $(document).ready(function() {
         $(".otp-form button[type=submit]").attr("disabled", true);
         $(".otp-form *:input[type!=hidden]:first").focus();
         let otp_fields = $(".otp-form .otp-field"),
             otp_value_field = $(".otp-form .otp-value");
         otp_fields
-            .on("input", function (e) {
+            .on("input", function(e) {
                 $(this).val(
                     $(this)
                         .val()
                         .replace(/[^0-9]/g, "")
                 );
                 let otp_value = "";
-                otp_fields.each(function () {
+                otp_fields.each(function() {
                     let field_value = $(this).val();
                     if (field_value != "") otp_value += field_value;
                 });
@@ -846,20 +875,24 @@ We may release future updates so it will overwrite this file. it's better and sa
                     $(".otp-form .button-type-submit").attr("disabled", true);
                 }
             })
-            .on("keyup", function (e) {
+            .on("keyup", function(e) {
                 let key = e.keyCode || e.charCode;
                 if (key == 8 || key == 46 || key == 37 || key == 40) {
                     // Backspace or Delete or Left Arrow or Down Arrow
-                    $(this).prev().focus();
+                    $(this)
+                        .prev()
+                        .focus();
                 } else if (key == 38 || key == 39 || $(this).val() != "") {
                     // Right Arrow or Top Arrow or Value not empty
-                    $(this).next().focus();
+                    $(this)
+                        .next()
+                        .focus();
                 }
             })
-            .on("paste", function (e) {
+            .on("paste", function(e) {
                 let paste_data = e.originalEvent.clipboardData.getData("text");
                 let paste_data_splitted = paste_data.split("");
-                $.each(paste_data_splitted, function (index, value) {
+                $.each(paste_data_splitted, function(index, value) {
                     otp_fields.eq(index).val(value);
                 });
             });
@@ -894,12 +927,12 @@ We may release future updates so it will overwrite this file. it's better and sa
     /*==================================
     32: Toggle Filter Options
     ====================================*/
-    $(".toggle-filter").on("click", function () {
+    $(".toggle-filter").on("click", function() {
         $(".filter-toggle-aside").toggleClass("active");
         $(".aside").removeClass("active");
         $(".filter-toggle-aside .card-body").toggleClass("custom-scrollbar");
     });
-    $(".filter-aside-close").on("click", function () {
+    $(".filter-aside-close").on("click", function() {
         $(".filter-toggle-aside").removeClass("active");
         $(".filter-toggle-aside .card-body").removeClass("custom-scrollbar");
     });
@@ -907,7 +940,7 @@ We may release future updates so it will overwrite this file. it's better and sa
     /*==================================
     33: Toggle Shipping Address
     ====================================*/
-    $(".toggle-shipping-saved-addresses").on("click", function () {
+    $(".toggle-shipping-saved-addresses").on("click", function() {
         $(".shipping-saved-addresses").slideToggle("slow");
         $(this).toggleClass("arrow-up");
     });
@@ -915,7 +948,7 @@ We may release future updates so it will overwrite this file. it's better and sa
     /*==================================
     33: Toggle Billing Address
     ====================================*/
-    $(".toggle-billing-saved-addresses").on("click", function () {
+    $(".toggle-billing-saved-addresses").on("click", function() {
         $(".billing-saved-addresses").slideToggle("slow");
         $(this).toggleClass("arrow-up");
     });
@@ -923,13 +956,13 @@ We may release future updates so it will overwrite this file. it's better and sa
     /*==================================
     34: Profile Menu Toggle
     ====================================*/
-    $(".profile-menu-toggle").on("click", function () {
+    $(".profile-menu-toggle").on("click", function() {
         $(this)
             .parents(".card")
             .find(".profile-menu-aside")
             .toggleClass("active");
     });
-    $(".profile-menu-aside-close").on("click", function () {
+    $(".profile-menu-aside-close").on("click", function() {
         $(".profile-menu-aside").removeClass("active");
     });
 
@@ -937,7 +970,7 @@ We may release future updates so it will overwrite this file. it's better and sa
     35: On Scroll Element Hide
     ====================================*/
     var element = $(".social-chat-icons, .back-to-top");
-    $(window).on("scroll", function () {
+    $(window).on("scroll", function() {
         if ($(window).width() < 768) {
             element.hide();
 
@@ -945,7 +978,7 @@ We may release future updates so it will overwrite this file. it's better and sa
             $.data(
                 this,
                 "scrollTimer",
-                setTimeout(function () {
+                setTimeout(function() {
                     element.show();
                 }, 250)
             );
@@ -955,15 +988,15 @@ We may release future updates so it will overwrite this file. it's better and sa
     /*==================================
     36: Stop propagation
     ====================================*/
-    $(window).on("load", function () {
-        $(".stopPropagation").on("click", function (e) {
+    $(window).on("load", function() {
+        $(".stopPropagation").on("click", function(e) {
             e.stopPropagation();
         });
     });
 
-    $(document).ready(function () {
-        const tabFunction = function () {
-            $(".show-more--content").each(function () {
+    $(document).ready(function() {
+        const tabFunction = function() {
+            $(".show-more--content").each(function() {
                 const button = $(this)
                     .closest(".tab-pane")
                     .find(".see-more-details, .see-more-details-review");
@@ -978,10 +1011,10 @@ We may release future updates so it will overwrite this file. it's better and sa
             });
         };
         tabFunction();
-        $('[data-bs-toggle="tab"]').on("shown.bs.tab", function (e) {
+        $('[data-bs-toggle="tab"]').on("shown.bs.tab", function(e) {
             tabFunction();
         });
-        $(".aside-overlay").on("click", function () {
+        $(".aside-overlay").on("click", function() {
             $(".aside").removeClass("active");
             $(".profile-menu-aside").removeClass("active");
         });
@@ -999,29 +1032,47 @@ We may release future updates so it will overwrite this file. it's better and sa
         //     }
         // });
 
-        $(".products-aside-categories-list .categories-form-check").each(function () {
-            const $this = $(this);
-            if (
-                $this.children(".categories-form-check-inner").find("input").is(":checked")
-            ) {
-                $this.children(".categories-form-subgroup").show();
-            } else {
-                $this.children(".categories-form-subgroup").hide();
-                $this.children(".categories-form-subgroup").find("input").prop("checked", false);
+        $(".products-aside-categories-list .categories-form-check").each(
+            function() {
+                const $this = $(this);
+                if (
+                    $this
+                        .children(".categories-form-check-inner")
+                        .find("input")
+                        .is(":checked")
+                ) {
+                    $this.children(".categories-form-subgroup").show();
+                } else {
+                    $this.children(".categories-form-subgroup").hide();
+                    $this
+                        .children(".categories-form-subgroup")
+                        .find("input")
+                        .prop("checked", false);
+                }
+                $this
+                    .children(".categories-form-check-inner")
+                    .find("input")
+                    .on("change", function() {
+                        if (
+                            $this
+                                .children(".categories-form-check-inner")
+                                .find("input")
+                                .is(":checked")
+                        ) {
+                            $this
+                                .children(".categories-form-subgroup")
+                                .slideDown(300);
+                        } else {
+                            $this
+                                .children(".categories-form-subgroup")
+                                .slideUp(300);
+                            $this
+                                .children(".categories-form-subgroup")
+                                .find("input")
+                                .prop("checked", false);
+                        }
+                    });
             }
-            $this
-                .children(".categories-form-check-inner")
-                .find("input")
-                .on("change", function () {
-                    if (
-                        $this.children(".categories-form-check-inner").find("input").is(":checked")
-                    ) {
-                        $this.children(".categories-form-subgroup").slideDown(300);
-                    } else {
-                        $this.children(".categories-form-subgroup").slideUp(300);
-                        $this.children(".categories-form-subgroup").find("input").prop("checked", false);
-                    }
-                });
-        });
+        );
     });
 })(jQuery);

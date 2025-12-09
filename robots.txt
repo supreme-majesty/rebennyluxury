@@ -1,3 +1,3 @@
 User-agent: *
 Disallow: /login/admin/
-Sitemap: http://localhost/Backend-6Valley-eCommerce-CMS/sitemap.xml
+Sitemap: http://localhost/Backend-rebennyluxury-eCommerce-CMS/sitemap.xml
