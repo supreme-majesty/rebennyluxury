@@ -619,4 +619,33 @@
             .addClass("has-sub-item").find("> a")
             .append("<i class='czi-arrow-{{Session::get('direction') === "rtl" ? 'left' : 'right'}}'></i>");
     </script>
+
+    <!--Start of Tawk.to Script-->
+    <<script type="text/javascript">
+        var Tawk_API = Tawk_API || {};
+        Tawk_API.customStyle = {
+            visibility: {
+                desktop: {
+                    position: 'bl',
+                    xOffset: '20px',
+                    yOffset: '20px'
+                },
+                mobile: {
+                    position: 'bl',
+                    xOffset: '20px',
+                    yOffset: '20px'
+                }
+            }
+        };
+        var Tawk_LoadStart = new Date();
+        (function(){
+            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+            s1.async=true;
+            s1.src='https://embed.tawk.to/655a99bd91e5c13bb5b1b3c1/1jeie7f0k';
+            s1.charset='UTF-8';
+            s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
 @endpush

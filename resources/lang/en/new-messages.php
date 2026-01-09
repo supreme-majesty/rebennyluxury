@@ -1156,4 +1156,12 @@ return [
 	"In_the_VAT/Tax_rate_field_input_the_percentage_value_of_the_VAT/Tax." => "In the VAT/Tax rate field input the percentage value of the VAT/Tax.",
 	"Submit_the_VAT/Tax" => "Submit the VAT/Tax",
 	"Click_the_Submit_button_to_save_the_new_tax." => "Click the Submit button to save the new tax.",
+	"Sub_Category_Added_Successfully" => "Sub Category Added Successfully",
+	"Select_Sub_Category_First" => "Select Sub Category First",
+	"Select_Main_Category" => "Select Main Category",
+	"type_sub_sub_category_name" => "Type sub sub category name",
+	"Add_Sub_Sub_Category" => "Add Sub Sub Category",
+	"Sub_Sub_Category_List" => "Sub Sub Category List",
+	"Sub_Sub_Category_Added_Successfully" => "Sub Sub Category Added Successfully",
+	"Sub_Sub_Category_updated_successfully" => "Sub Sub Category updated successfully",
 ];
